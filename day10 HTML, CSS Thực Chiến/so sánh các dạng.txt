@@ -1,0 +1,17 @@
+flex-start
+[A][B][C]________________
+
+center
+________[A][B][C]________
+
+flex-end
+________________[A][B][C]
+
+space-between
+[A]__________[B]__________[C]
+
+space-around
+___[A]______[B]______[C]___
+Ngoài ra còn có space-evenly (rất hay dùng):
+
+____[A]____[B]____[C]____
