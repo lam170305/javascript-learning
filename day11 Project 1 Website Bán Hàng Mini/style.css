@@ -1,0 +1,102 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: #f5f5f7;
+    margin: 0;
+    padding: 24px 0;
+}
+
+h1, h2 {
+    text-align: center;
+    color: #1a1a1a;
+    letter-spacing: -0.5px;
+}
+
+.sp {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.quan, .ao {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+
+    border: 1px solid #eee;
+    border-radius: 16px;
+
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+    padding: 20px;
+    margin: 12px;
+
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.quan img, .ao img {
+    width: 100px;
+    margin-bottom: 12px;
+    transition: transform 0.3s ease;
+}
+
+.quan:hover, .ao:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.quan:hover img, .ao:hover img {
+    transform: scale(1.08);
+}
+
+.quan h3, .ao h3 {
+    margin: 8px 0 4px;
+    font-size: 1.1rem;
+    color: #222;
+}
+
+.quan .price, .ao .price {
+    color: #e63946;
+    font-weight: 600;
+    font-size: 1.05rem;
+    margin-bottom: 12px;
+}
+
+button {
+    background-color: #1a1a1a;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+button:hover {
+    transform: scale(1.05);
+    background-color: #333;
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
+@media (max-width: 768px) {
+    .sp {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .quan, .ao {
+        width: 90%;
+        max-width: 350px;
+    }
+}
