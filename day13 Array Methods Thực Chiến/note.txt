@@ -1,0 +1,24 @@
+const tasks = ["Học HTML", "Học CSS"];
+
+const value = "Học HTML";
+
+if (tasks.some(task => task === value)) {
+    console.lo("Đã tồn tại");
+}
+
+
+
+todo list:
+const tasks = [];
+
+function addTask(value) {
+
+    if (tasks.some(task => task.toLowerCase() === value.toLowerCase())) {
+        alert("Đã tồn tại");
+        return;
+    }
+
+    tasks.push(value);
+
+    console.log(tasks);
+}
