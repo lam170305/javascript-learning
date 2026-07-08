@@ -1,0 +1,289 @@
+/* =====================================================================
+   QUẢN LÍ SINH VIÊN — "Sổ đăng bộ" (Student Registry Ledger) theme
+   Palette:  ink navy #1B2A4A · paper cream #F6F1E4 · mustard #C99A2E
+             brick #B54A3D · charcoal text #2E2A24 · hairline #D8CDB4
+   Type:     Lora (display/serif) · Inter (body) · JetBrains Mono (index no.)
+   Signature: each student is rendered as a numbered ledger card with a
+              perforated edge and a stamped tab, like a card-catalog entry.
+   ===================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap');
+
+:root{
+    --ink:      #1B2A4A;
+    --ink-2:    #24365c;
+    --paper:    #F6F1E4;
+    --card:     #FFFDF8;
+    --mustard:  #C99A2E;
+    --brick:    #B54A3D;
+    --charcoal: #2E2A24;
+    --hairline: #D8CDB4;
+    --shadow:   rgba(27, 42, 74, 0.16);
+}
+
+*{ box-sizing: border-box; }
+
+body{
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 56px 20px;
+    background-color: var(--paper);
+    /* faint ledger-paper ruling */
+    background-image: repeating-linear-gradient(
+        180deg,
+        rgba(27,42,74,0.035) 0px,
+        rgba(27,42,74,0.035) 1px,
+        transparent 1px,
+        transparent 34px
+    );
+    font-family: 'Inter', system-ui, sans-serif;
+    color: var(--charcoal);
+}
+
+/* ===== Main ledger panel ===== */
+.qlsv{
+    width: 100%;
+    max-width: 480px;
+    background: var(--card);
+    border-radius: 6px;
+    box-shadow: 0 18px 40px var(--shadow), 0 1px 0 rgba(255,255,255,0.6) inset;
+    padding: 36px 32px 30px;
+    position: relative;
+    border-left: 8px solid var(--ink);
+}
+
+/* stamped corner label, like a registry office seal */
+.qlsv::after{
+    content: "SỔ ĐĂNG BỘ";
+    position: absolute;
+    top: 18px;
+    right: -14px;
+    transform: rotate(6deg);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--mustard);
+    border: 1.5px solid var(--mustard);
+    padding: 3px 8px;
+    border-radius: 3px;
+    background: var(--card);
+}
+
+.qlsv h2{
+    margin: 0 0 26px;
+    font-family: 'Lora', serif;
+    font-weight: 700;
+    font-size: 26px;
+    letter-spacing: 0.01em;
+    color: var(--ink);
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+}
+
+.qlsv h2::after{
+    content: "";
+    flex: 1;
+    height: 2px;
+    background: linear-gradient(90deg, var(--mustard), transparent);
+    transform: translateY(-4px);
+}
+
+/* ===== Input ===== */
+#tensv{
+    width: 100%;
+    padding: 12px 4px;
+    margin-bottom: 16px;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    color: var(--charcoal);
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid var(--hairline);
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+#tensv::placeholder{
+    color: #A99C82;
+    font-style: italic;
+}
+
+#tensv:focus{
+    border-bottom-color: var(--mustard);
+}
+
+/* ===== Buttons (shared reset) ===== */
+button{
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 13.5px;
+    letter-spacing: 0.01em;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: transform 0.12s ease, box-shadow 0.12s ease, background-color 0.15s ease, color 0.15s ease;
+}
+
+button:focus-visible{
+    outline: 2px solid var(--mustard);
+    outline-offset: 2px;
+}
+
+/* Primary action: Thêm sv */
+#them{
+    padding: 10px 20px;
+    margin-right: 10px;
+    margin-bottom: 24px;
+    background: var(--ink);
+    color: var(--paper);
+    border: 1px solid var(--ink);
+}
+
+#them:hover{
+    background: var(--ink-2);
+    transform: translateY(-1px);
+}
+
+/* Secondary action: Tìm kiếm */
+#timkiem{
+    padding: 10px 20px;
+    margin-bottom: 24px;
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--ink);
+}
+
+#timkiem:hover{
+    background: var(--ink);
+    color: var(--paper);
+    transform: translateY(-1px);
+}
+
+/* ===== Results / student list ===== */
+#ketqua{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Empty state: an invitation to act, not just a blank box */
+#ketqua:empty::before{
+    content: "Sổ đăng bộ chưa có sinh viên nào — hãy thêm một tên phía trên.";
+    display: block;
+    padding: 22px 4px;
+    text-align: center;
+    font-style: italic;
+    font-size: 13.5px;
+    color: #A99C82;
+    border: 1.5px dashed var(--hairline);
+    border-radius: 6px;
+}
+
+/* Each student row rendered by render() is a plain <div>: style it as a
+   numbered ledger card. The counter encodes real information here —
+   it is each record's position in the registry. */
+#ketqua{
+    counter-reset: sv;
+}
+
+#ketqua > div{
+    counter-increment: sv;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px 12px 46px;
+    background: var(--card);
+    border: 1px solid var(--hairline);
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(27,42,74,0.05);
+    transition: transform 0.14s ease, box-shadow 0.14s ease, border-color 0.14s ease;
+}
+
+#ketqua > div:hover{
+    transform: translateX(2px);
+    border-color: var(--mustard);
+    box-shadow: 0 4px 12px rgba(27,42,74,0.10);
+}
+
+/* index tab, e.g. "01" */
+#ketqua > div::before{
+    content: counter(sv, decimal-leading-zero);
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--mustard);
+}
+
+/* student name */
+#ketqua > div span{
+    flex: 1;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--charcoal);
+}
+
+/* Edit button */
+#ketqua > div button:nth-of-type(1){
+    padding: 6px 14px;
+    background: transparent;
+    color: var(--mustard);
+    border: 1px solid var(--mustard);
+}
+
+#ketqua > div button:nth-of-type(1):hover{
+    background: var(--mustard);
+    color: var(--card);
+}
+
+/* Delete button */
+#ketqua > div button:nth-of-type(2){
+    padding: 6px 14px;
+    background: transparent;
+    color: var(--brick);
+    border: 1px solid var(--brick);
+}
+
+#ketqua > div button:nth-of-type(2):hover{
+    background: var(--brick);
+    color: var(--card);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 480px){
+    .qlsv{
+        padding: 28px 20px 24px;
+        border-left-width: 6px;
+    }
+
+    .qlsv::after{
+        display: none;
+    }
+
+    #them, #timkiem{
+        width: 100%;
+        margin-right: 0;
+    }
+
+    #them{
+        margin-bottom: 10px;
+    }
+
+    #ketqua > div{
+        flex-wrap: wrap;
+    }
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce){
+    *{
+        transition: none !important;
+    }
+}
