@@ -1,0 +1,119 @@
+/* ===== Style đơn giản cho trang Product Manager ===== */
+
+/* Toàn trang */
+body {
+    margin: 0;
+    padding: 30px 20px;
+    background-color: #f2f2f2;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+/* Tiêu đề */
+h2 {
+    text-align: center;
+    color: #2c3e50;
+}
+.sp{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+}
+/* Ô nhập tên và giá sản phẩm */
+input {
+    width: 100px;
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+}
+input#title {
+    width: 350px;
+}
+input:focus {
+    border-color: #3498db;
+    outline: none;
+}
+
+/* Nút Add / Lưu */
+#addBtn {
+    padding: 5px 10px;
+    margin: 5px;
+    background-color: #3498db;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#addBtn:hover {
+    background-color: #2980b9;
+}
+
+/* Đường kẻ ngăn cách form và danh sách */
+hr {
+    max-width: 500px;
+    margin: 20px auto;
+    border: none;
+    border-top: 1px solid #ddd;
+}
+
+/* Khung chứa toàn bộ danh sách sản phẩm */
+#danhsach {
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Mỗi thẻ sản phẩm do JS tạo ra */
+#danhsach div {
+    background-color: #ffffff;
+    padding: 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+#danhsach h3 {
+    margin: 0 0 6px;
+    color: #2c3e50;
+}
+
+#danhsach p {
+    margin: 0 0 10px;
+    color: #555;
+}
+
+/* Nút Sửa */
+#danhsach button:first-of-type {
+    padding: 6px 12px;
+    margin-right: 8px;
+    background-color: #f1c40f;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#danhsach button:first-of-type:hover {
+    background-color: #d4ac0d;
+}
+
+/* Nút Xóa */
+#danhsach button:last-of-type {
+    padding: 6px 12px;
+    background-color: #e74c3c;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#danhsach button:last-of-type:hover {
+    background-color: #c0392b;
+}

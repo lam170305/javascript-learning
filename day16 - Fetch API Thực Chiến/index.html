@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lí người dùng</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Khu vực tìm kiếm + form sửa thông tin -->
+    <div class="timkiem">
+        <h3>Tìm kiếm người dùng</h3>
+        <input type="text" id="searchInput" placeholder="Nhập tên người dùng">
+
+        <!-- Form này ẩn mặc định, chỉ hiện ra khi bấm nút Edit -->
+        <div id="editForm" style="display: none;">
+            <input type="text" id="name" placeholder="Tên">
+            <input type="email" id="email" placeholder="Email">
+            <input type="text" id="phone" placeholder="Số điện thoại">
+
+            <button id="save">Lưu</button>
+        </div>
+    </div>
+
+    <!-- Khu vực hiển thị danh sách người dùng -->
+    <div class="users">
+        <h3>Thông tin người dùng</h3>
+        <div id="info"></div>
+
+        <!-- Chữ "Loading..." chỉ hiện khi đang gọi API -->
+        <h2 id="loading" style="display: none;">
+            Loading...
+        </h2>
+    </div>
+
+    <!-- Nút gọi lại API để lấy dữ liệu gốc, thay cho dữ liệu đã lưu -->
+    <button id="reset">
+        Reset dữ liệu
+    </button>
+
+    <script src="scripts.js"></script>
+</body>
+</html>

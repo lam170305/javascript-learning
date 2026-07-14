@@ -1,0 +1,146 @@
+/* ===== Style đơn giản cho trang Quản lí người dùng ===== */
+
+/* Toàn trang: nền xám nhạt, chữ mặc định dễ đọc */
+body {
+    margin: 0;
+    padding: 30px 20px;
+    background-color: #f2f2f2;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+/* ===== Khu vực tìm kiếm + form sửa ===== */
+.timkiem {
+    max-width: 500px;
+    margin: 0 auto 20px;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.timkiem h3 {
+    margin-top: 0;
+    color: #2c3e50;
+}
+
+/* Ô nhập tìm kiếm và các ô trong form sửa dùng chung 1 kiểu cho đồng bộ */
+.timkiem input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.timkiem input:focus {
+    border-color: #3498db;
+    outline: none;
+}
+
+/* Form sửa: thêm viền đứt nét để phân biệt với ô tìm kiếm phía trên */
+#editForm {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px dashed #ccc;
+}
+
+/* Nút Lưu trong form sửa */
+#save {
+    width: 100%;
+    padding: 10px;
+    background-color: #2ecc71;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+#save:hover {
+    background-color: #27ae60;
+}
+
+/* ===== Khu vực danh sách người dùng ===== */
+.users {
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.users h3 {
+    margin-top: 0;
+    color: #2c3e50;
+}
+
+/* Chữ "Loading..." khi đang gọi API */
+#loading {
+    text-align: center;
+    color: #999;
+    font-size: 16px;
+}
+
+/* Mỗi thẻ thông tin 1 người dùng, do JS tạo ra bên trong #info */
+#info div {
+    padding: 12px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+}
+
+#info h3 {
+    margin: 0 0 6px;
+    font-size: 16px;
+    color: #2c3e50;
+}
+
+#info p {
+    margin: 4px 0;
+    font-size: 14px;
+    color: #555;
+}
+
+/* Nút Edit */
+#info button:first-of-type {
+    padding: 6px 12px;
+    margin-top: 8px;
+    margin-right: 8px;
+    background-color: #f1c40f;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Nút Delete */
+#info button:last-of-type {
+    padding: 6px 12px;
+    margin-top: 8px;
+    background-color: #e74c3c;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* ===== Nút Reset dữ liệu (nằm ngoài cùng trang) ===== */
+#reset {
+    display: block;
+    margin: 20px auto 0;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+#reset:hover {
+    background-color: #2980b9;
+}
