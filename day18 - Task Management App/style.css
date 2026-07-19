@@ -1,0 +1,124 @@
+/* ===== Style đơn giản cho trang Quản lí công việc ===== */
+
+/* Toàn trang */
+body {
+    margin: 0;
+    padding: 30px 20px;
+    background-color: #f2f2f2;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+/* Khung chính, canh giữa trang cho gọn */
+body {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+h3 {
+    color: #2c3e50;
+    margin-bottom: 8px;
+}
+
+/* Ô nhập công việc và ô tìm kiếm */
+input[type="text"],
+#taskInput,
+#search {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+input:focus {
+    border-color: #3498db;
+    outline: none;
+}
+
+/* Nút Add */
+#addBtn {
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    background-color: #3498db;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#addBtn:hover {
+    background-color: #2980b9;
+}
+
+/* Ô chọn bộ lọc */
+#filter {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+/* Danh sách công việc */
+#taskList {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+/* Mỗi dòng công việc */
+.task {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+}
+
+.task span {
+    flex: 1;
+    font-size: 14px;
+}
+
+/* Công việc đã hoàn thành: chữ mờ đi và gạch ngang */
+.task.done span {
+    text-decoration: line-through;
+    color: #999;
+}
+
+/* Nút Edit */
+.task button:first-of-type {
+    padding: 5px 10px;
+    background-color: #f1c40f;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Nút Delete */
+.task button:last-of-type {
+    padding: 5px 10px;
+    background-color: #e74c3c;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Phần thống kê tổng / đã xong / chưa xong */
+p {
+    font-size: 14px;
+}
+
+p span {
+    font-weight: bold;
+    color: #2c3e50;
+}

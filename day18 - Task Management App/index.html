@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lí công việc</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Khu vực nhập công việc mới -->
+    <h3>Nhập công việc</h3>
+    <input id="taskInput" placeholder="Nhập công việc...">
+    <button id="addBtn">Add</button>
+
+    <!-- Ô tìm kiếm, lọc theo tên công việc -->
+    <h3>Tìm kiếm công việc</h3>
+    <input id="search" placeholder="Tìm công việc">
+
+    <!-- Lọc theo trạng thái: tất cả / đã xong / chưa xong -->
+    <h3>Lọc công việc</h3>
+    <select id="filter">
+        <option value="all">All</option>
+        <option value="done">Done</option>
+        <option value="pending">Pending</option>
+    </select>
+
+    <!-- Danh sách công việc, do script.js render ra -->
+    <h3>Danh sách công việc</h3>
+    <div id="taskList"></div>
+
+    <!-- Thống kê số lượng công việc -->
+    <p>Tổng: <span id="total">0</span></p>
+    <p>Đã hoàn thành: <span id="done">0</span></p>
+    <p>Chưa hoàn thành: <span id="pending">0</span></p>
+
+    <script src="script.js"></script>
+</body>
+</html>
